@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Insights - Settings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #6ba748;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .sidebar a:hover {
+            color: #ddd;
+        }
+        .content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        h2 {
+            color: #6ba748;
+        }
+        .form-section {
+            margin-top: 40px;
+        }
+        .form-section h4 {
+            margin-bottom: 20px;
+        }
+        .form-section .form-group {
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            background-color: #6ba748;
+            border-color: #6ba748;
+        }
+        .btn-primary:hover {
+            background-color: #5d9f3f;
+            border-color: #5d9f3f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <div class="sidebar">
+            <h2 class="text-white">EduTrack Insights</h2>
+            <a href="dashboard.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="Classes.html">Classes</a>
+            <a href="JoinClass.html">Join/Create Classes</a>
+            <a href="settings.html">Settings</a>
+        </div>
+        
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Settings</h2>
+
+            <!-- Account Settings Section -->
+            <div class="form-section">
+                <h4>Account Settings</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="userName">Username:</label>
+                        <input type="text" class="form-control" id="userName" value="JohnDoe123">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" value="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Change Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Notifications Settings Section -->
+            <div class="form-section">
+                <h4>Notification Settings</h4>
+                <form>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="emailNotifications" checked>
+                        <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="smsNotifications">
+                        <label class="form-check-label" for="smsNotifications">SMS Notifications</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="pushNotifications" checked>
+                        <label class="form-check-label" for="pushNotifications">Push Notifications</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update Notifications</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

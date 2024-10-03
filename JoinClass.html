@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Insights - Join/Create Classes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #6ba748;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .sidebar a:hover {
+            color: #ddd;
+        }
+        .content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .form-section {
+            margin-top: 40px;
+        }
+        .form-section h4 {
+            margin-bottom: 20px;
+        }
+        .form-section .form-group {
+            margin-bottom: 15px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <div class="sidebar">
+            <h2 class="text-white">EduTrack Insights</h2>
+            <a href="dashboard.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="Classes.html">Classes</a>
+            <a href="JoinClass.html">Join/Create Classes</a>
+            <a href="settings.html">Settings</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Join or Create Classes</h2>
+
+            <!-- Join Class Section -->
+            <div class="form-section">
+                <h4>Join an Existing Class</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="classCode">Enter Class Code:</label>
+                        <input type="text" class="form-control" id="classCode" placeholder="Enter class code here">
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Join Class</button>
+                </form>
+            </div>
+
+            <!-- Create Class Section -->
+            <div class="form-section">
+                <h4>Create a New Class</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="className">Class Name:</label>
+                        <input type="text" class="form-control" id="className" placeholder="Enter class name">
+                    </div>
+                    <div class="form-group">
+                        <label for="classDescription">Class Description:</label>
+                        <textarea class="form-control" id="classDescription" rows="3" placeholder="Enter class description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="classType">Class Type:</label>
+                        <select class="form-control" id="classType">
+                            <option value="project">Project-Based</option>
+                            <option value="lecture">Lecture-Based</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success submit-btn">Create Class</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

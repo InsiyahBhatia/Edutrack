@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Insights - Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #6ba748;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .sidebar a:hover {
+            color: #ddd;
+        }
+        .content {
+            padding: 40px;
+        }
+        .class-button {
+            margin: 10px 0;
+            width: 100%; /* Make the button full width */
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <div class="sidebar">
+            <h2 class="text-white">EduTrack Insights</h2>
+            <a href="dashboard.html">Home</a> <!-- Updated to point to dashboard.html -->
+            <a href="Profile.html">Profile</a>
+            <a href="Classes.html">Classes</a>
+            <a href="JoinClass.html">Join/Create Classes</a>
+            <a href="settings.html">Settings</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content flex-grow-1">
+            <h2>Dashboard</h2>
+            <h4>User Information</h4>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Classes Enrolled:</strong></p>
+            <div>
+                <button class="btn btn-primary class-button" onclick="location.href='class1.html'">Introduction to Programming</button>
+                <button class="btn btn-primary class-button" onclick="location.href='class2.html'">Data Structures and Algorithms</button>
+                <button class="btn btn-primary class-button" onclick="location.href='class3.html'">Web Development</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
