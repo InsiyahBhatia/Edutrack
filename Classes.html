@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - Classes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .d-flex {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #6ba748;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .sidebar h2, .sidebar a {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover {
+            color: #ddd;
+        }
+.content {
+    padding: 40px;
+    flex-grow: 1;
+    background-color: #ffffff; /* White background for content area */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for content */
+    border-radius: 10px; /* Rounded corners for content area */
+}
+
+h3 {
+    font-size: 28px; /* Increased font size for the main title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #4CAF50; /* Matching title color with the sidebar */
+}
+
+.class-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.class-list li {
+    padding: 15px;
+    background: linear-gradient(90deg, #6ba748 0%, #5a9440 100%); /* Gradient background for class items */
+    margin-bottom: 15px;
+    color: white;
+    border-radius: 8px; /* Rounded corners */
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    transition: background 0.3s, transform 0.2s;
+}
+
+.class-list li:hover {
+    background: linear-gradient(90deg, #5a9440 0%, #4b8a3d 100%); /* Darker gradient on hover */
+    cursor: pointer;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.class-list li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; /* Bold text for links */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Adjusted width for smaller screens */
+    }
+
+    .content {
+        padding: 20px; /* Reduced padding for smaller screens */
+    }
+
+    .class-list li {
+        padding: 10px; /* Reduced padding for list items */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <div class="sidebar">
+            <h2 class="text-white">EduTrack Insights</h2>
+            <a href="dashboard.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="classes.html">Classes</a>
+            <a href="JoinClass.html">Join/Create Classes</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h3>List of Classes</h3>
+            <ul class="class-list">
+                <li><a href="class-details.html?class=Mathematics101">Mathematics 101</a></li>
+                <li><a href="class-details.html?class=Science102">Science 102</a></li>
+                <li><a href="class-details.html?class=History103">History 103</a></li>
+                <li><a href="class-details.html?class=ComputerScience104">Computer Science 104</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

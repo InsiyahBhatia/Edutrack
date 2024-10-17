@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Insights - Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .d-flex {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #6ba748;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .sidebar h2, .sidebar a {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover {
+            color: #ddd;
+        }
+        .content {
+            padding: 40px;
+            flex-grow: 1;
+        }
+        .progress-circle {
+            width: 150px;
+            height: 110px;
+            border-radius: 50%;
+            background: conic-gradient(#6ba748 calc(var(--progress) * 1%), #e0e0e0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+            position: relative;
+        }
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Ensure flexibility */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+        <nav class="sidebar" role="navigation">
+            <h2 class="text-white">EduTrack Insights</h2>
+            <a href="dashboard.html">Home</a>
+            <a href="Profile.html">Profile</a>
+            <a href="Classes.html">Classes</a>
+            <a href="JoinClass.html">Join/Create Classes</a>
+        </nav>
+
+        <main class="content">
+            <h2>Student Progress Management</h2>
+
+            <div>
+                <label for="classSelect">Select Class:</label>
+                <select id="classSelect" class="form-control" onchange="updateChart()">
+                    <option value="Introduction to Programming">Introduction to Programming</option>
+                    <option value="Data Structures and Algorithms">Data Structures and Algorithms</option>
+                    <option value="Web Development">Web Development</option>
+                </select>
+            </div>
+
+            <div class="chart-container mt-4">
+                <canvas id="progressChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="progress-container mt-4">
+                <div class="progress-circle">
+                    <canvas id="circleProgress1" width="100" height="100"></canvas>
+                    <span>Intro to Programming</span>
+                </div>
+                <div class="progress-circle">
+                    <canvas id="circleProgress2" width="100" height="100"></canvas>
+                    <span>Data Structures</span>
+                </div>
+                <div class="progress-circle">
+                    <canvas id="circleProgress3" width="100" height="100"></canvas>
+                    <span>Web Development</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        const classNames = ['Introduction to Programming', 'Data Structures and Algorithms', 'Web Development'];
+        const classColors = {
+            'Introduction to Programming': '#6ba748',
+            'Data Structures and Algorithms': '#007bff',
+            'Web Development': '#ffc107'
+        };
+        const classScores = {
+            'Introduction to Programming': [85, 90, 78, 92, 88],
+            'Data Structures and Algorithms': [75, 80, 70, 85, 90],
+            'Web Development': [80, 82, 86, 89, 91]
+        };
+        let labels = ['Test 1', 'Test 2', 'Test 3', 'Test 4', 'Test 5'];
+
+        const progressChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: classNames.map(className => ({
+                    label: className,
+                    data: classScores[className],
+                    borderColor: classColors[className],
+                    borderWidth: 2,
+                    fill: false,
+                }))
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        color: '#333',
+                        align: 'top',
+                        formatter: function(value) {
+                            return value.toFixed(1);
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Score'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tests'
+                        }
+                    }
+                }
+            }
+        });
+
+        function updateChart() {
+            const selectedClass = document.getElementById('classSelect').value;
+            const scores = classScores[selectedClass];
+            labels = scores.map((_, index) => `Test ${index + 1}`);
+
+            progressChart.data.labels = labels;
+            progressChart.data.datasets.forEach((dataset, index) => {
+                dataset.data = classScores[classNames[index]];
+            });
+            progressChart.update();
+
+            updateCircleProgress(selectedClass);
+        }
+
+        function updateCircleProgress(className) {
+            const totalTests = classScores[className].length;
+            const totalScore = classScores[className].reduce((a, b) => a + b, 0);
+            const totalPercentage = totalTests > 0 ? (totalScore / (100 * totalTests)) * 100 : 0;
+
+            const circleCtx = document.getElementById(`circleProgress${classNames.indexOf(className) + 1}`).getContext('2d');
+            const circle = new Chart(circleCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [totalPercentage, 100 - totalPercentage],
+                        backgroundColor: [classColors[className], '#e9ecef'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false },
+                        beforeDraw: function(chart) {
+                            const ctx = chart.ctx;
+                            ctx.restore();
+                            const fontSize = (chart.height / 114).toFixed(2);
+                            ctx.font = `${fontSize}em Arial`;
+                            ctx.textBaseline = "middle";
+                            const text = totalPercentage.toFixed(0) + "%";
+                            const textX = Math.round((chart.width - ctx.measureText(text).width) / 2);
+                            ctx.fillText(text, textX, chart.height / 2);
+                            ctx.save();
+                        }
+                    }
+                }
+            });
+        }
+
+        updateCircleProgress(classNames[0]); // Initialize on page load
+    </script>
+</body>
+</html>
